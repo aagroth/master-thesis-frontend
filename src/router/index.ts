@@ -17,6 +17,39 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/about-us',
+      name: 'about us',
+      component: AboutUs
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: Checkout
+    },
+    {
+      path: '/product',
+      name: 'product',
+      component: Product
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: Products
+    },
+    {
+      path: '/terms-and-condition',
+      name: 'terms and condition',
+      component: TermsAndCondition
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: User
     }
   ]
 })
