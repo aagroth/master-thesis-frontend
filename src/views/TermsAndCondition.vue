@@ -1,0 +1,3 @@
+<template>
+    This is the terms and condition page
+</template>

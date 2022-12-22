@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '@/views/Home.vue'
+import AboutUs from '@/views/AboutUs.vue'
+import Cart from '@/views/Cart.vue'
+import Checkout from '@/views/Checkout.vue'
+import Product from '@/views/Product.vue'
+import Products from '@/views/Products.vue'
+import TermsAndCondition from '@/views/TermsAndCondition.vue'
+import User from '@/views/User.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,15 +14,42 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/about-us',
+      name: 'about us',
+      component: AboutUs
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: Checkout
+    },
+    {
+      path: '/product',
+      name: 'product',
+      component: Product
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: Products
+    },
+    {
+      path: '/terms-and-condition',
+      name: 'terms and condition',
+      component: TermsAndCondition
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: User
     }
   ]
 })
