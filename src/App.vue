@@ -1,13 +1,11 @@
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/smugasshole.png"/>
+    <img alt="logo" src="@/assets/smugasshole.png"/>
 
     <div class="">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/about-us">About us</RouterLink>
       </nav>
     </div>
   </header>
