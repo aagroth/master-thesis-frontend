@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="mb-5">
     <nav class="navbar m-2" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <img alt="logo" src="@/assets/logo.png" class="image is-96x96"/>
