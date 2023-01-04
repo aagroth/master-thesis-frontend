@@ -21,16 +21,21 @@
   </header>
 
   <RouterView />
+  <Footer />
 </template>
 
 <script>
 import { RouterLink, RouterView } from 'vue-router'
+import Footer from './components/Footer.vue'
 
 export default {
    data: function() {
        return {
            isOpen: false
        }
+   },
+   components: {
+    Footer
    }
 }
 </script>
