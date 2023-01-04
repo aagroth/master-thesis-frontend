@@ -14,6 +14,7 @@
             <router-link to="/products" class="navbar-item is-tab">Products</router-link>
             <router-link to="/about" class="navbar-item is-tab">About</router-link>
             <router-link to="/terms-and-condition" class="navbar-item is-tab">Terms & Condition</router-link>
+            <router-link to="/contact" class="navbar-item is-tab">Contact</router-link>
         </div>
       </div>
     </nav>
