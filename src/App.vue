@@ -21,7 +21,7 @@
   </header>
 
   <RouterView />
-  <Footer />
+  <Footer class="mt-5" />
 </template>
 
 <script>
