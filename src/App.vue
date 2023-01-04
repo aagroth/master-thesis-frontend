@@ -1,8 +1,8 @@
 <template>
   <header>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar m-2" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <img alt="logo" src="@/assets/smugasshole.png" />
+        <img alt="logo" src="@/assets/logo.png" class="image is-96x96"/>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
