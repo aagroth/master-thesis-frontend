@@ -1,5 +1,5 @@
 <template>
-  <header class="mb-5">
+  <header class="m-5">
     <nav class="navbar m-2" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link to="/"><img alt="logo" src="@/assets/logo.png" class="image is-96x96"/></router-link>
