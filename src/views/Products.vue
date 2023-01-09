@@ -22,6 +22,7 @@
           <div class="content">
             {{ product.description }}
           </div>
+          <button v-on:click="goToProduct(product.id)" class="button">See product</button>
         </div>
       </div>
     </div>
@@ -50,6 +51,9 @@
         .catch(error => {
           console.log('Something went wrong!')
         })
+      },
+      goToProduct: function (idProduct) {
+        this.$router.push({name:'product',params:{id:idProduct}})
       }
     }
   }

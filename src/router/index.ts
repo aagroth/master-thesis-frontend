@@ -43,6 +43,11 @@ const router = createRouter({
       component: Products
     },
     {
+      path: '/product/:id',
+      name: 'product',
+      component: Product
+    },
+    {
       path: '/terms-and-condition',
       name: 'terms and condition',
       component: TermsAndCondition
