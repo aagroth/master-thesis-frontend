@@ -1,12 +1,9 @@
 <template>
-  <footer class="footer has-background-dark">
-    <div class="columns">
-      <div class="column is-half has-text-centered">
-        <h3 class="is-size-4 has-text-white-bis">A magic merch store!</h3>
-      </div>
-      <div class="column auto has-text-centered">
-        <h3 class="is-size-4 has-text-white-bis">Instagram</h3>
-      </div>
-    </div>
+  <footer class="has-text-centered is-flex-align-items-flex-end mt-auto has-background-dark section is-medium">
+    <h3 class="is-size-3 has-text-white-bis">Groth's goodies!</h3>
+    <p class="has-text-white-bis mb-5">A dedicated merchandise store for Adam.</p>
+    <small>
+      <span class="has-text-white-bis">Copyright @2023</span>
+    </small>
   </footer>
 </template>
