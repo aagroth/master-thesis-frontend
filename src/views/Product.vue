@@ -4,6 +4,7 @@
       data () {
         return {
           idProduct: this.$route.params.id,
+          products: null
         }
       },
       mounted: function () {
