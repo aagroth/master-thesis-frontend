@@ -9,7 +9,7 @@
             <span aria-hidden="true"></span>
         </a>
       </div>
-      <div class="navbar-menu" v-bind:class="{'is-active': isOpen}">
+      <div class="navbar-menu is-shadowless" v-bind:class="{'is-active': isOpen}">
         <div class="navbar-end">
             <router-link to="/products" class="navbar-item is-tab">Products</router-link>
             <router-link to="/about" class="navbar-item is-tab">About</router-link>
