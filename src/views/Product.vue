@@ -32,7 +32,8 @@
               </tr>
             </tbody>
           </table>
-          <button class="button is-primary">Add to cart</button>
+          <button class="button is-primary mr-2">Add to cart</button>
+          <button class="button" v-on:click="this.goToProducts()">Back to Products</button>
         </div>
       </div>
     </div>
@@ -61,6 +62,9 @@
           .catch(error => {
             console.log('Something went wrong!')
           })
+        },
+        goToProducts: function (idProduct) {
+          this.$router.push({name:'products'})
         }
       }
     }
