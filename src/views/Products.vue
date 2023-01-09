@@ -1,6 +1,18 @@
 <template>
     This is the products page
 </template>      getProducts: function () {
+<script>
+  export default {
+    data () {
+      return {
+        products: null
+      }
+    },
+    mounted: function () {
+      this.getProducts()
+    },
+    methods: {
+      getProducts: function () {
         console.log('We got here!')
         fetch('https://fakestoreapi.com/products')
         .then(res=>res.json())
