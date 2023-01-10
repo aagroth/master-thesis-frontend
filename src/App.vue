@@ -11,16 +11,19 @@
       </div>
       <div class="navbar-menu is-shadowless" v-bind:class="{'is-active': isOpen}">
         <div class="navbar-end">
-            <router-link to="/products" class="navbar-item is-tab">Products</router-link>
-            <router-link to="/about" class="navbar-item is-tab">About</router-link>
-            <router-link to="/terms-and-condition" class="navbar-item is-tab">Terms & Condition</router-link>
-            <router-link to="/contact" class="navbar-item is-tab">Contact</router-link>
-            <router-link to="/cart" class="navbar-item is-tab"><font-awesome-icon icon="fa-solid fa-bag-shopping" /></router-link>
+          <router-link to="/products" class="navbar-item is-tab">Products</router-link>
+          <router-link to="/about" class="navbar-item is-tab">About</router-link>
+          <router-link to="/terms-and-condition" class="navbar-item is-tab">Terms & Condition</router-link>
+          <router-link to="/contact" class="navbar-item is-tab">Contact</router-link>
+          <div class="navbar-item is-tab" v-on:click="this.showCartComponent = true"><font-awesome-icon icon="fa-solid fa-bag-shopping" /></div>
         </div>
       </div>
     </nav>
   </header>
-
+  <CartComponent 
+    v-if="this.showCartComponent"
+    v-on:closeCartComponent="this.showCartComponent = false"
+  />
   <RouterView />
   <Footer class="mt-5" />
 </template>
@@ -28,15 +31,18 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 import Footer from './components/Footer.vue'
+import CartComponent from './components/CartComponent.vue'
 
 export default {
    data: function() {
        return {
-           isOpen: false
+           isOpen: false,
+           showCartComponent: false
        }
    },
    components: {
-    Footer
+    Footer,
+    CartComponent
    }
 }
 </script>

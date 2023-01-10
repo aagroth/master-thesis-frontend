@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
-import Cart from '@/views/Cart.vue'
 import Checkout from '@/views/Checkout.vue'
 import Product from '@/views/Product.vue'
 import Products from '@/views/Products.vue'
@@ -21,11 +20,6 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
-    },
-    {
-      path: '/cart',
-      name: 'cart',
-      component: Cart
     },
     {
       path: '/checkout',

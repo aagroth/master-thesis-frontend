@@ -22,7 +22,8 @@
           <div class="content">
             {{ product.description }}
           </div>
-          <button v-on:click="goToProduct(product.id)" class="button">See product</button>
+          <button v-on:click="goToProduct(product.id)" class="button mr-2">See product</button>
+          <button class="button is-primary" v-on:click="storeToLocalStorage(product)">Add to cart</button>
         </div>
       </div>
     </div>
@@ -32,7 +33,9 @@
   export default {
     data () {
       return {
-        products: null
+        products: null,
+        cart: [],
+        product: null
       }
     },
     mounted: function () {
@@ -40,13 +43,10 @@
     },
     methods: {
       getProducts: function () {
-        console.log('We got here!')
         fetch('https://fakestoreapi.com/products')
         .then(res=>res.json())
         .then(json => {
-          console.log(json)
           this.products = json
-          console.log(this.products)
         })
         .catch(error => {
           console.log('Something went wrong!')
@@ -54,6 +54,11 @@
       },
       goToProduct: function (idProduct) {
         this.$router.push({name:'product',params:{id:idProduct}})
+      },
+      storeToLocalStorage: function (productObject) {
+        this.product = productObject
+        this.cart.push(this.product)
+        localStorage.setItem("cart", JSON.stringify(this.cart))
       }
     }
   }
