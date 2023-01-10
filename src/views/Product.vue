@@ -32,7 +32,7 @@
               </tr>
             </tbody>
           </table>
-          <button class="button is-primary mr-2">Add to cart</button>
+          <button class="button is-primary mr-2" v-on:click="storeToLocalStorage(product)">Add to cart</button>
           <button class="button" v-on:click="this.goToProducts()">Back to Products</button>
         </div>
       </div>
@@ -50,22 +50,11 @@
       mounted: function () {
         this.getProducts()
       },
-      methods: {
-        getProducts: function () {
-          fetch('https://fakestoreapi.com/products')
-          .then(res=>res.json())
-          .then(json => {
-            console.log(json)
-            this.products = json
-            console.log(this.products)
-          })
-          .catch(error => {
-            console.log('Something went wrong!')
-          })
-        },
-        goToProducts: function (idProduct) {
-          this.$router.push({name:'products'})
-        }
+      storeToLocalStorage: function (productObject) {
+        this.product = productObject
+        this.cart.push(this.product)
+        localStorage.setItem("cart", JSON.stringify(this.cart))
       }
     }
+  }
 </script>
