@@ -20,7 +20,10 @@
       </div>
     </nav>
   </header>
-
+  <CartComponent 
+    v-if="this.showCartComponent"
+    v-on:closeCartComponent="this.showCartComponent = false"
+  />
   <RouterView />
   <Footer class="mt-5" />
 </template>
@@ -28,15 +31,18 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 import Footer from './components/Footer.vue'
+import CartComponent from './components/CartComponent.vue'
 
 export default {
    data: function() {
        return {
-           isOpen: false
+           isOpen: false,
+           showCartComponent: false
        }
    },
    components: {
-    Footer
+    Footer,
+    CartComponent
    }
 }
 </script>
