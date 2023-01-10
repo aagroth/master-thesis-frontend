@@ -22,7 +22,8 @@
           <div class="content">
             {{ product.description }}
           </div>
-          <button v-on:click="goToProduct(product.id)" class="button">See product</button>
+          <button v-on:click="goToProduct(product.id)" class="button mr-2">See product</button>
+          <button class="button is-primary" v-on:click="storeToLocalStorage(product)">Add to cart</button>
         </div>
       </div>
     </div>
@@ -54,6 +55,11 @@
       },
       goToProduct: function (idProduct) {
         this.$router.push({name:'product',params:{id:idProduct}})
+      },
+      storeToLocalStorage: function (productObject) {
+        this.product = productObject
+        this.cart.push(this.product)
+        localStorage.setItem("cart", JSON.stringify(this.cart))
       }
     }
   }
