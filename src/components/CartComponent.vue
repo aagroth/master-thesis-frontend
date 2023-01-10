@@ -28,7 +28,7 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success">Checkout</button>
+        <button class="button is-success" v-on:click="this.goToCheckout()">Checkout</button>
       </footer>
     </div>
   </div>
@@ -60,6 +60,10 @@ export default {
     },
     removeProductFromLocalStorage: function (idProduct) {
       // Add way to remove specific product from LocalStorage
+    },
+    goToCheckout: function () {
+      this.$emit('closeCartComponent')
+      this.$router.push({name:'checkout'})
     }
   }
 }
