@@ -34,15 +34,16 @@ import Footer from './components/Footer.vue'
 import CartComponent from './components/CartComponent.vue'
 
 export default {
-   data: function() {
-       return {
-           isOpen: false,
-           showCartComponent: false
-       }
-   },
-   components: {
-    Footer,
-    CartComponent
-   }
+  name: 'App', 
+  data: function() {
+      return {
+          isOpen: false,
+          showCartComponent: false
+      }
+  },
+  components: {
+  Footer,
+  CartComponent
+  }
 }
 </script>

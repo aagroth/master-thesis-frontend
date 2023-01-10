@@ -41,6 +41,7 @@
 </template>
 <script>
   export default {
+    name: 'Product',
     data () {
       return {
         idProduct: this.$route.params.id,

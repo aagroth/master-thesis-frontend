@@ -31,6 +31,7 @@
 </template>
 <script>
   export default {
+    name: 'Store',
     data () {
       return {
         products: null,
