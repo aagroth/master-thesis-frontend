@@ -41,14 +41,30 @@
 </template>
 <script>
   export default {
-      data () {
-        return {
-          idProduct: this.$route.params.id,
-          products: null
-        }
+    data () {
+      return {
+        idProduct: this.$route.params.id,
+        products: null,
+        cart: [],
+        product: null
+      }
+    },
+    mounted: function () {
+      this.getProducts()
+    },
+    methods: {
+      getProducts: function () {
+        fetch('https://fakestoreapi.com/products')
+        .then(res=>res.json())
+        .then(json => {
+          this.products = json
+        })
+        .catch(error => {
+          console.log('Something went wrong!')
+        })
       },
-      mounted: function () {
-        this.getProducts()
+      goToProducts: function (idProduct) {
+        this.$router.push({name:'products'})
       },
       storeToLocalStorage: function (productObject) {
         this.product = productObject
