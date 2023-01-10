@@ -65,7 +65,7 @@
         })
       },
       goToProducts: function (idProduct) {
-        this.$router.push({name:'products'})
+        this.$router.push({name:'store'})
       },
       storeToLocalStorage: function (productObject) {
         this.product = productObject
