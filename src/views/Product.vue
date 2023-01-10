@@ -32,7 +32,7 @@
               </tr>
             </tbody>
           </table>
-          <button class="button is-primary mr-2" v-on:click="storeToLocalStorage(product)">Add to cart</button>
+          <button class="button is-primary mr-2" v-on:click="this.storeToLocalStorage(product)">Add to cart</button>
           <button class="button" v-on:click="this.goToProducts()">Back to Products</button>
         </div>
       </div>
@@ -41,6 +41,7 @@
 </template>
 <script>
   export default {
+    name: 'Product',
     data () {
       return {
         idProduct: this.$route.params.id,
@@ -64,7 +65,7 @@
         })
       },
       goToProducts: function (idProduct) {
-        this.$router.push({name:'products'})
+        this.$router.push({name:'store'})
       },
       storeToLocalStorage: function (productObject) {
         this.product = productObject

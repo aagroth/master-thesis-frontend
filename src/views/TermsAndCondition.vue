@@ -20,3 +20,8 @@
     </div>
   </div>
 </template>
+<script>
+  export default {
+    name: 'TermsAndCondition'
+  }
+</script>

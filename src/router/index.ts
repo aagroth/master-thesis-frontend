@@ -3,7 +3,7 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import Checkout from '@/views/Checkout.vue'
 import Product from '@/views/Product.vue'
-import Products from '@/views/Products.vue'
+import Store from '@/views/Store.vue'
 import TermsAndCondition from '@/views/TermsAndCondition.vue'
 import User from '@/views/User.vue'
 import Contact from '@/views/Contact.vue'
@@ -32,9 +32,9 @@ const router = createRouter({
       component: Product
     },
     {
-      path: '/products',
-      name: 'products',
-      component: Products
+      path: '/store',
+      name: 'store',
+      component: Store
     },
     {
       path: '/product/:id',
