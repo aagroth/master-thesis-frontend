@@ -33,7 +33,9 @@
   export default {
     data () {
       return {
-        products: null
+        products: null,
+        cart: [],
+        product: null
       }
     },
     mounted: function () {
