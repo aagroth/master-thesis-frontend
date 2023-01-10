@@ -1,7 +1,7 @@
 <template>
   <section class="hero is-link is-medium">
     <div class="hero-body">
-      <router-link to="/products" class="">
+      <router-link to="/store" class="">
         <div class="columns">
           <div class="column has-text-centered is-half">
             <p class="title is-2">
