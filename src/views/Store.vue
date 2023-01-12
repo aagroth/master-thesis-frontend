@@ -46,7 +46,7 @@
     },
     methods: {
       getProducts: function () {
-        fetch('http://localhost:80/master-thesis-backend/get-products')
+        fetch('http://localhost:80/master-thesis-backend')
         .then(res=>res.json())
         .then(json => {
           this.products = json
