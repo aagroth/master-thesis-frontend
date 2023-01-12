@@ -50,8 +50,10 @@
           })
         }
         console.log(requestOptions)
-        fetch('http://localhost:5000/master-thesis-backend/post-message', requestOptions)
+        debugger
+        fetch('master-thesis-backend/', requestOptions)
         .then(response => {
+          debugger
           console.log(response)
         }).catch(error => {
           console.log(error)
