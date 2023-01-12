@@ -5,3 +5,7 @@ body {
 .is-horizontal-center {
     justify-content: center;
 }
+
+.columns.is-equal-height > .column > * {
+    height: 100% !important;
+}

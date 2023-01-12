@@ -76,6 +76,7 @@
     },
     computed: {
     totalSum(){
+      // TODO: Fix totalSum 
       let total = 0;
       this.cart.forEach((item, i) => {
           total += item.price
@@ -86,7 +87,10 @@
     methods: {
       getProductsFromLocalStorage: function () {
       this.cart = JSON.parse(localStorage.getItem("cart"))
-      }
+      },
+      removeProductFromLocalStorage: function (idProduct) {
+      // TODO: Add way to remove specific product from LocalStorage
+      },
     }
   }
 </script>
