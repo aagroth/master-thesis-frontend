@@ -4,19 +4,19 @@
       <div class="card">
         <div class="card-image">
           <figure class="image">
-            <img :src="product.image" alt="Placeholder image">
+            <img :src="product.imgUrl" alt="Product image">
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <img :src="product.image" alt="Placeholder image">
+                <img :src="product.imgUrl" alt="Small product image">
               </figure>
             </div>
             <div class="media-content">
               <p class="title is-4">{{ product.title }}</p>
-              <p class="subtitle is-6">{{ product.category }}</p>
+              <p class="subtitle is-6">{{ product.price }}$</p>
             </div>
           </div>
           <div class="content">

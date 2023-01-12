@@ -13,7 +13,7 @@
               <tr>
                 <td>
                   <figure class="image is-48x48">
-                    <img :src="product.image" alt="Placeholder image">
+                    <img :src="product.imgUrl" alt="Product image">
                   </figure>
                 </td>
                 <td>{{ product.title }}</td>
