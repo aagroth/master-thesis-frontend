@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-flex-direction-row is-flex-wrap-wrap m-2">
+  <div class="columns is-flex-direction-row is-flex-wrap-wrap m-2 is-equal-height">
     <div class="column is-one-quarter-desktop is-full-mobile is-full-tablet" v-for="product in this.products" :key="product.id">
       <div class="card">
         <div class="card-image">
