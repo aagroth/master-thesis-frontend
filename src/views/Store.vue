@@ -22,8 +22,10 @@
           <div class="content">
             {{ product.description }}
           </div>
-          <button v-on:click="this.goToProduct(product.id)" class="button mr-2">See product</button>
-          <button class="button is-primary" v-on:click="this.storeToLocalStorage(product)">Add to cart</button>
+          <div class="">
+            <button v-on:click="this.goToProduct(product.id)" class="button mr-2 mt-2">See product</button>
+            <button class="button is-primary mt-2" v-on:click="this.storeToLocalStorage(product)">Add to cart</button>
+          </div>
         </div>
       </div>
     </div>
