@@ -38,7 +38,7 @@
             <input type="text" class="input"> 
           </div>
           <div class="field">
-            <label class="label">Phone number</label>
+            <label class="label">Email</label>
             <input type="text" class="input"> 
           </div>
           <div class="field">
