@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column is-half">
           <figure class="image">
-            <img :src="product.image" alt="Placeholder image">
+            <img :src="product.imgUrl" alt="Product image">
           </figure>
         </div>
         <div class="column auto">
@@ -55,7 +55,7 @@
     },
     methods: {
       getProducts: function () {
-        fetch('https://fakestoreapi.com/products')
+        fetch('http://localhost:80/master-thesis-backend/get-products')
         .then(res=>res.json())
         .then(json => {
           this.products = json
