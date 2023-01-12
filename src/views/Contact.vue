@@ -9,24 +9,54 @@
     <form class="column is-three-fifths is-offset-one-fifth">
       <div class="field">
         <label class="label">Name</label>
-        <input type="text" class="input"> 
+        <input type="text" class="input" v-model="this.name"> 
       </div>
       <div class="field">
         <label class="label">Email</label>
-        <input type="text" class="input"> 
+        <input type="text" class="input" v-model="this.email"> 
       </div>
       <div class="field">
         <label class="label">Message</label>
         <div class="control">
-          <textarea class="textarea"></textarea>
+          <textarea class="textarea" v-model="this.message"></textarea>
         </div> 
       </div>
-      <button class="button is-primary">Send</button>
+      <button class="button is-primary" v-on:click="storeMessageToDb()">Send</button>
     </form>
   </div>
 </template>
 <script>
   export default {
-    name: 'Contact'
+    name: 'Contact',
+    data () {
+      return {
+        name: null,
+        email: null,
+        message: null
+      }
+    },
+    methods: {
+      storeMessageToDb: function () {
+        const requestOptions = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            message: this.message
+          })
+        }
+        console.log(requestOptions)
+        fetch('http://localhost:5000/master-thesis-backend/post-message', requestOptions)
+        .then(response => {
+          console.log(response)
+        }).catch(error => {
+          console.log(error)
+        })
+      }
+    }
   }
 </script>
