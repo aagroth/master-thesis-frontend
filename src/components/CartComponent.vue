@@ -4,11 +4,14 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Cart</p>
-        <button class="delete has-background-danger" v-on:click="$emit('closeCartComponent')"></button>
+        <button class="delete" v-on:click="$emit('closeCartComponent')"></button>
       </header>
       <section class="modal-card-body">
+        <div class="has-background-primary pb-3 pt-3">
+          <p class="has-text-white-bis has-text-centered">Woooho! Free shipping as always!</p>
+        </div>
         <div>
-          <table class="table">
+          <table class="table mt-5">
             <tbody v-for="product in this.cart" :key="product.id">
               <tr>
                 <td>
@@ -28,7 +31,7 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" v-on:click="this.goToCheckout()">Checkout</button>
+        <button class="button is-primary" v-on:click="this.goToCheckout()">Checkout</button>
       </footer>
     </div>
   </div>
@@ -47,6 +50,7 @@ export default {
   },
   computed: {
     totalSum(){
+      // TODO: Fix totalSum
       let total = 0;
       this.cart.forEach((item, i) => {
           total += item.price
@@ -59,7 +63,7 @@ export default {
       this.cart = JSON.parse(localStorage.getItem("cart"))
     },
     removeProductFromLocalStorage: function (idProduct) {
-      // Add way to remove specific product from LocalStorage
+      // TODO: Add way to remove specific product from LocalStorage
     },
     goToCheckout: function () {
       this.$emit('closeCartComponent')
