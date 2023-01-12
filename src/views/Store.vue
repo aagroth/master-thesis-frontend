@@ -46,13 +46,13 @@
     },
     methods: {
       getProducts: function () {
-        fetch('http://localhost:5000/master-thesis-backend')
+        fetch('master-thesis-backend/')
         .then(res=>res.json())
         .then(json => {
           this.products = json
         })
         .catch(error => {
-          console.log('Something went wrong!')
+          console.log(error)
         })
       },
       goToProduct: function (idProduct) {
