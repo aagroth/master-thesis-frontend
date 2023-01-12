@@ -44,7 +44,7 @@
     },
     methods: {
       getProducts: function () {
-        fetch('https://fakestoreapi.com/products')
+        fetch('http://localhost:80/master-thesis-backend/get-products')
         .then(res=>res.json())
         .then(json => {
           this.products = json
