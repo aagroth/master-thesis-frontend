@@ -35,5 +35,28 @@
         message: null
       }
     },
+    methods: {
+      storeMessageToDb: function () {
+        const requestOptions = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            message: this.message
+          })
+        }
+        console.log(requestOptions)
+        fetch('http://localhost:5000/master-thesis-backend/post-message', requestOptions)
+        .then(response => {
+          console.log(response)
+        }).catch(error => {
+          console.log(error)
+        })
+      }
+    }
   }
 </script>
