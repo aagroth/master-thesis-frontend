@@ -50,10 +50,9 @@
           })
         }
         console.log(requestOptions)
-        debugger
         fetch('master-thesis-backend/', requestOptions)
         .then(response => {
-          debugger
+          alert('Test')
           console.log(response)
         }).catch(error => {
           console.log(error)
