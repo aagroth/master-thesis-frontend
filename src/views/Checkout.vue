@@ -43,7 +43,10 @@
             </td>
             <td>{{ product.title }}</td>
             <td>${{ product.price }}</td>
-            <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product.id)"></button></td>
+            <td><button class="button" v-on:click="product.qty--">-</button></td>
+            <td>{{ product.qty }}</td>
+            <td><button class="button" v-on:click="product.qty++">+</button></td>
+            <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
           </tr>
         </tbody>
       </table>
@@ -56,7 +59,7 @@
           <p class="has-text-right mb-5">Always free shipping</p>
           <p class="has-text-right has-text-primary">{{ this.totalSum }}$</p>
           <div class="is-flex is-align-items-flex-end is-justify-content-end mt-5">
-            <button class="button is-primary">Place order</button>
+            <button class="button is-primary" v-on:click="sendOrder()">Place order</button>
           </div>
         </div>
       </div>
@@ -68,29 +71,41 @@
     name: 'Checkout',
     data () {
       return {
-        cart: []
+        cart: [],
+        showSuccessMessage: false
       }
     },
     mounted: function () {
       this.getProductsFromLocalStorage()
     },
     computed: {
-    totalSum(){
-      // TODO: Fix totalSum 
+      totalSum () {
       let total = 0;
-      this.cart.forEach((item, i) => {
-          total += item.price
-      });
-      return total;
-    }
+        if (this.cart) {
+          this.cart.forEach((item, i) => {
+          total += item.price * item.qty
+        })
+        }
+        return total;
+      }
     },
     methods: {
       getProductsFromLocalStorage: function () {
-      this.cart = JSON.parse(localStorage.getItem("cart"))
+        this.cart = JSON.parse(localStorage.getItem("cart"))
       },
-      removeProductFromLocalStorage: function (idProduct) {
-      // TODO: Add way to remove specific product from LocalStorage
+      removeProductFromLocalStorage: function (product) {
+        let index = this.cart.indexOf(product)
+        this.cart.splice(index, 1)
+        localStorage.setItem("cart", JSON.stringify(this.cart))
       },
+      sendOrder: function () {
+        // Popup with success order
+        this.showSuccessMessage = true
+        // clearing LocalStorage
+        localStorage.removeItem('cart')
+        // Empty all inputs
+        // Send user to home page
+      }
     }
   }
 </script>

@@ -21,7 +21,10 @@
                 </td>
                 <td>{{ product.title }}</td>
                 <td>${{ product.price }}</td>
-                <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product.id)"></button></td>
+                <td><button class="button" v-on:click="product.qty--">-</button></td>
+                <td>{{ product.qty }}</td>
+                <td><button class="button" v-on:click="product.qty++">+</button></td>
+                <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
               </tr>
             </tbody>
           </table>
@@ -49,23 +52,27 @@ export default {
     this.getProductsFromLocalStorage()
   },
   computed: {
-    totalSum(){
-      // TODO: Fix totalSum
+    totalSum () {
       let total = 0;
-      this.cart.forEach((item, i) => {
-          total += item.price
-      });
-      return total;
+        if (this.cart) {
+          this.cart.forEach((item, i) => {
+          total += item.price * item.qty
+        })
+        }
+        return total;
     }
   },
   methods: {
     getProductsFromLocalStorage: function () {
       this.cart = JSON.parse(localStorage.getItem("cart"))
     },
-    removeProductFromLocalStorage: function (idProduct) {
-      // TODO: Add way to remove specific product from LocalStorage
+    removeProductFromLocalStorage: function (product) {
+      let index = this.cart.indexOf(product)
+      this.cart.splice(index, 1)
+      localStorage.setItem("cart", JSON.stringify(this.cart))
     },
     goToCheckout: function () {
+      localStorage.setItem("cart", JSON.stringify(this.cart))
       this.$emit('closeCartComponent')
       this.$router.push({name:'checkout'})
     }
