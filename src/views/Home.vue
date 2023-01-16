@@ -54,7 +54,38 @@
   </section>
 </template>
 <script>
+  import apiManager from '@/components/apiManager.ts'
+
   export default {
-    name: 'Home'
+    name: 'Home',
+    data () {
+      return {
+        name: null,
+        email: null,
+        message: null
+      }
+    },
+    methods: {
+      storeMessage: function () {
+        const requestOptions = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            message: this.message
+          })
+        }
+        apiManager.postMessageToDb(requestOptions).then(products => {
+          this.products = products
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }
+    }
   }
 </script>
