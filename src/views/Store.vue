@@ -16,7 +16,7 @@
             </div>
             <div class="media-content">
               <p class="title is-4">{{ product.title }}</p>
-              <p class="subtitle is-6">{{ product.price }}$</p>
+              <p class="subtitle is-6">${{ product.price }}</p>
             </div>
           </div>
           <div class="content">
