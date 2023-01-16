@@ -24,7 +24,7 @@
               </tr>
               <tr>
                 <td>Price:</td>
-                <td>{{ product.price }}$</td>
+                <td>${{ product.price }}</td>
               </tr>
               <tr>
                 <td>Category:</td>

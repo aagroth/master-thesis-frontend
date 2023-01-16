@@ -42,7 +42,7 @@
               </figure>
             </td>
             <td>{{ product.title }}</td>
-            <td>{{ product.price }}$</td>
+            <td>${{ product.price }}</td>
             <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product.id)"></button></td>
           </tr>
         </tbody>

@@ -20,14 +20,14 @@
                   </figure>
                 </td>
                 <td>{{ product.title }}</td>
-                <td>{{ product.price }}$</td>
+                <td>${{ product.price }}</td>
                 <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product.id)"></button></td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="mt-5 has-text-right">
-          <p class="has-text-weight-bold">Total: {{ this.totalSum }}$</p>
+          <p class="has-text-weight-bold">Total: ${{ this.totalSum }}</p>
         </div>
       </section>
       <footer class="modal-card-foot">
