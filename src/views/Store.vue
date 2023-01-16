@@ -59,6 +59,8 @@
         this.$router.push({name:'product',params:{id:idProduct}})
       },
       storeToLocalStorage: function (productObject) {
+        this.cart = localStorage.getItem('cart')
+        this.cart = this.cart ? JSON.parse(this.cart) : []
         this.product = productObject
         this.cart.push(this.product)
         localStorage.setItem("cart", JSON.stringify(this.cart))
