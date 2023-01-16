@@ -59,7 +59,7 @@
           <p class="has-text-right mb-5">Always free shipping</p>
           <p class="has-text-right has-text-primary">{{ this.totalSum }}$</p>
           <div class="is-flex is-align-items-flex-end is-justify-content-end mt-5">
-            <button class="button is-primary">Place order</button>
+            <button class="button is-primary" v-on:click="sendOrder()">Place order</button>
           </div>
         </div>
       </div>
@@ -71,7 +71,8 @@
     name: 'Checkout',
     data () {
       return {
-        cart: []
+        cart: [],
+        showSuccessMessage: false
       }
     },
     mounted: function () {
@@ -97,6 +98,14 @@
         this.cart.splice(index, 1)
         localStorage.setItem("cart", JSON.stringify(this.cart))
       },
+      sendOrder: function () {
+        // Popup with success order
+        this.showSuccessMessage = true
+        // clearing LocalStorage
+        localStorage.removeItem('cart')
+        // Empty all inputs
+        // Send user to home page
+      }
     }
   }
 </script>
