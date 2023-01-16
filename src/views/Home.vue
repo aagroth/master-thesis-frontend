@@ -35,19 +35,19 @@
         <form class="column is-three-fifths is-offset-one-fifth">
           <div class="field">
             <label class="label">Name</label>
-            <input type="text" class="input"> 
+            <input type="text" class="input" v-model="this.name"> 
           </div>
           <div class="field">
             <label class="label">Email</label>
-            <input type="text" class="input"> 
+            <input type="text" class="input" v-model="this.email"> 
           </div>
           <div class="field">
             <label class="label">Message</label>
             <div class="control">
-              <textarea class="textarea"></textarea>
+              <textarea class="textarea" v-model="this.message"></textarea>
             </div> 
           </div>
-          <button class="button is-primary">Send</button>
+          <button class="button is-primary" v-on:click="storeMessage()">Send</button>
         </form>
       </div>
     </div>
