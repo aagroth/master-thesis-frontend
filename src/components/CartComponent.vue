@@ -78,12 +78,6 @@ export default {
       localStorage.setItem("cart", JSON.stringify(this.cart))
       this.$emit('closeCartComponent')
       this.$router.push({name:'checkout'})
-    },
-    addQty: function (product) {
-      
-    },
-    subtractQty: function () {
-
     }
   }
 }
