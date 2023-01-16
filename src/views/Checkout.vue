@@ -89,12 +89,12 @@
     },
     methods: {
       getProductsFromLocalStorage: function () {
-      this.cart = JSON.parse(localStorage.getItem("cart"))
+        this.cart = JSON.parse(localStorage.getItem("cart"))
       },
       removeProductFromLocalStorage: function (product) {
-      let index = this.cart.indexOf(product)
-      this.cart.splice(index, 1)
-      localStorage.setItem("cart", JSON.stringify(this.cart))
+        let index = this.cart.indexOf(product)
+        this.cart.splice(index, 1)
+        localStorage.setItem("cart", JSON.stringify(this.cart))
       },
     }
   }
