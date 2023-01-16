@@ -1,5 +1,5 @@
 <template>
-  <div class="" v-for="(product,index) in products" :key="index">
+  <div class="mb-3" v-for="(product,index) in products" :key="index">
     <div class="container" v-if="idProduct == product.id">
       <div class="columns">
         <div class="column is-half">
@@ -40,6 +40,8 @@
   </div>
 </template>
 <script>
+  import apiManager from '@/components/apiManager.ts'
+
   export default {
     name: 'Product',
     data () {
@@ -55,10 +57,8 @@
     },
     methods: {
       getProducts: function () {
-        fetch('master-thesis-backend/')
-        .then(res=>res.json())
-        .then(json => {
-          this.products = json
+        apiManager.getAllProducts().then(products => {
+          this.products = products
         })
         .catch(error => {
           console.log(error)
