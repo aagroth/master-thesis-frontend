@@ -55,9 +55,13 @@ export default {
     totalSum(){
       // TODO: Fix totalSum
       let total = 0;
-      this.cart.forEach((item, i) => {
-          total += item.price
-      });
+        if (this.cart) {
+          this.cart.forEach((product, i) => {
+          total += product.price
+        })
+      } else {
+
+      }
       return total;
     }
   },
