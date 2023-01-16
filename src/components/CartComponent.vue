@@ -21,7 +21,7 @@
                 </td>
                 <td>{{ product.title }}</td>
                 <td>${{ product.price }}</td>
-                <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product.id)"></button></td>
+                <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
               </tr>
             </tbody>
           </table>
@@ -62,8 +62,10 @@ export default {
     getProductsFromLocalStorage: function () {
       this.cart = JSON.parse(localStorage.getItem("cart"))
     },
-    removeProductFromLocalStorage: function (idProduct) {
-      // TODO: Add way to remove specific product from LocalStorage
+    removeProductFromLocalStorage: function (product) {
+      let index = this.cart.indexOf(product)
+      this.cart.splice(index, 1)
+      localStorage.setItem("cart", JSON.stringify(this.cart))
     },
     goToCheckout: function () {
       this.$emit('closeCartComponent')
