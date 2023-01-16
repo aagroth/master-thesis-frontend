@@ -78,14 +78,15 @@
       this.getProductsFromLocalStorage()
     },
     computed: {
-    totalSum(){
-      // TODO: Fix totalSum 
+      totalSum () {
       let total = 0;
-      this.cart.forEach((item, i) => {
-          total += item.price
-      });
-      return total;
-    }
+        if (this.cart) {
+          this.cart.forEach((item, i) => {
+          total += item.price * item.qty
+        })
+        }
+        return total;
+      }
     },
     methods: {
       getProductsFromLocalStorage: function () {
