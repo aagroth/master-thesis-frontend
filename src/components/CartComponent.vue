@@ -52,17 +52,14 @@ export default {
     this.getProductsFromLocalStorage()
   },
   computed: {
-    totalSum(){
-      // TODO: Fix totalSum
+    totalSum () {
       let total = 0;
         if (this.cart) {
-          this.cart.forEach((product, i) => {
-          total += product.price
+          this.cart.forEach((item, i) => {
+          total += item.price * item.qty
         })
-      } else {
-
-      }
-      return total;
+        }
+        return total;
     }
   },
   methods: {
