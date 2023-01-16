@@ -32,6 +32,8 @@
   </div>
 </template>
 <script>
+  import apiManager from '@/components/apiManager.ts'
+
   export default {
     name: 'Store',
     data () {
@@ -46,10 +48,8 @@
     },
     methods: {
       getProducts: function () {
-        fetch('master-thesis-backend/')
-        .then(res=>res.json())
-        .then(json => {
-          this.products = json
+        apiManager.getAllProducts().then(products => {
+          this.products = products
         })
         .catch(error => {
           console.log(error)
