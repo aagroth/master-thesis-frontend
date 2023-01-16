@@ -48,7 +48,7 @@
     },
     methods: {
       getProducts: function () {
-        apiManager.getAllProducts().then(products => {
+        apiManager.getAllProductsFromDb().then(products => {
           this.products = products
         })
         .catch(error => {
