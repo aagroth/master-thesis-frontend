@@ -21,9 +21,9 @@
                 </td>
                 <td>{{ product.title }}</td>
                 <td>${{ product.price }}</td>
-                <td><button class="button" v-on:click="subtractQty(product)">-</button></td>
+                <td><button class="button" v-on:click="product.qty--">-</button></td>
                 <td>{{ product.qty }}</td>
-                <td><button class="button" v-on:click="addQty(product)">+</button></td>
+                <td><button class="button" v-on:click="product.qty++">+</button></td>
                 <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
               </tr>
             </tbody>
@@ -75,6 +75,7 @@ export default {
       localStorage.setItem("cart", JSON.stringify(this.cart))
     },
     goToCheckout: function () {
+      localStorage.setItem("cart", JSON.stringify(this.cart))
       this.$emit('closeCartComponent')
       this.$router.push({name:'checkout'})
     },
