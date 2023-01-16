@@ -21,11 +21,13 @@
           <textarea class="textarea" v-model="this.message"></textarea>
         </div> 
       </div>
-      <button class="button is-primary" v-on:click="storeMessageToDb()">Send</button>
+      <button class="button is-primary" v-on:click="storeMessage()">Send</button>
     </form>
   </div>
 </template>
 <script>
+  import apiManager from '@/components/apiManager.ts'
+  
   export default {
     name: 'Contact',
     data () {
@@ -36,7 +38,7 @@
       }
     },
     methods: {
-      storeMessageToDb: function () {
+      storeMessage: function () {
         const requestOptions = {
           method: 'POST',
           headers: {
@@ -49,11 +51,10 @@
             message: this.message
           })
         }
-        console.log(requestOptions)
-        fetch('master-thesis-backend/', requestOptions)
-        .then(response => {
-          console.log(response)
-        }).catch(error => {
+        apiManager.postMessageToDb(requestOptions).then(products => {
+          this.products = products
+        })
+        .catch(error => {
           console.log(error)
         })
       }
