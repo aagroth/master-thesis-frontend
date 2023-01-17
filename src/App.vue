@@ -9,6 +9,7 @@
             <span aria-hidden="true"></span>
         </a>
       </div>
+      <!-- Navbar for both mobile and desktop -->
       <div class="navbar-menu is-shadowless" v-bind:class="{'is-active': isOpen}">
         <div class="navbar-end">
           <router-link to="/store" class="navbar-item is-tab">Store</router-link>

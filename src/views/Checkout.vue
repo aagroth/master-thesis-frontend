@@ -65,6 +65,7 @@
       </div>
     </div>
   </div>
+  <!-- Triggers when user press "Place order" -->
   <SuccessMessage 
   v-if="showSuccessMessage === true"
   v-on:closeSuccessMessage="this.showSuccessMessage = false"
@@ -103,6 +104,7 @@
       this.getProductsFromLocalStorage()
     },
     computed: {
+      // Calculate items * price to get a total
       totalSum () {
       let total = 0;
         if (this.cart) {
@@ -114,14 +116,17 @@
       }
     },
     methods: {
+      // Will be running when mounting and get cart from LocalStorage
       getProductsFromLocalStorage: function () {
         this.cart = JSON.parse(localStorage.getItem("cart"))
       },
+      // Loops through cart and remove the choosen product and then set the new LocalStorage
       removeProductFromLocalStorage: function (product) {
         let index = this.cart.indexOf(product)
         this.cart.splice(index, 1)
         localStorage.setItem("cart", JSON.stringify(this.cart))
       },
+      // when running a modal will be displayed with the customers order information
       sendOrder: function () {
         // Turn to true so successMessage will be shown
         this.showSuccessMessage = true

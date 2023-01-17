@@ -56,6 +56,7 @@
       this.getProducts()
     },
     methods: {
+      // Runs on mount and fills the data property "products" with data from backend
       getProducts: function () {
         apiManager.getAllProductsFromDb().then(products => {
           this.products = products
@@ -64,16 +65,23 @@
           console.log(error)
         })
       },
+      // Pushes user to Product page
       goToProduct: function (idProduct) {
         this.$router.push({name:'product',params:{id:idProduct}})
       },
+      // Stores product to LocalStorage
       storeToLocalStorage: function (productObject) {
+        // First gets the cart from LocalStorage
         this.cart = localStorage.getItem('cart')
+        // Else fill this.cart with a empty array
         this.cart = this.cart ? JSON.parse(this.cart) : []
+        // Then check if product is already saved in LocalStorage
         let found = this.cart.find(product => product.id == productObject.id)
 
+        // If so show message to user
         if (found) {
           this.warnUser = true
+          // Else push product to this.cart and update LocalStorage
         } else {
           this.warnUser = false
           this.product = productObject

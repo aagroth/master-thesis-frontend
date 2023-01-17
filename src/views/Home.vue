@@ -66,6 +66,8 @@
       }
     },
     methods: {
+      // POSTing name, email and message to the backend
+      // Uses fetch call frm apiManager
       storeMessage: function () {
         const requestOptions = {
           method: 'POST',
@@ -79,8 +81,8 @@
             message: this.message
           })
         }
-        apiManager.postMessageToDb(requestOptions).then(products => {
-          this.products = products
+        apiManager.postMessageToDb(requestOptions).then(response => {
+          console.log(response)
         })
         .catch(error => {
           console.log(error)
