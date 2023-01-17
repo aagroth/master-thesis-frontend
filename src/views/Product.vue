@@ -12,6 +12,8 @@
             <thead>
               <th>Details</th>
               <th></th>
+              <th></th>
+              <th></th>
             </thead>
             <tbody>
               <tr>
@@ -27,8 +29,10 @@
                 <td>${{ product.price }}</td>
               </tr>
               <tr>
-                <td>Category:</td>
-                <td>{{ product.category }}</td>
+                <td>Quantity:</td>
+                <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
+                <td>{{ product.qty }}</td>
+                <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
               </tr>
             </tbody>
           </table>
@@ -68,11 +72,17 @@
         this.$router.push({name:'store'})
       },
       storeToLocalStorage: function (productObject) {
-        this.cart = localStorage.getItem('cart')
-        this.cart = this.cart ? JSON.parse(this.cart) : []
-        this.product = productObject
-        this.cart.push(this.product)
-        localStorage.setItem("cart", JSON.stringify(this.cart))
+        let found = this.cart.find(product => product.id == productObject.id)
+
+        if (found) {
+          console.log('This product is already added')
+        } else {
+          this.cart = localStorage.getItem('cart')
+          this.cart = this.cart ? JSON.parse(this.cart) : []
+          this.product = productObject
+          this.cart.push(this.product)
+          localStorage.setItem("cart", JSON.stringify(this.cart))
+        }
       }
     }
   }
