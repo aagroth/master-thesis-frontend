@@ -5,23 +5,23 @@
       <div class="columns">
         <div class="column mt-2">
           <label class="label">First name</label>
-          <input class="input" type="text">
+          <input class="input" type="text" v-model="this.firstName">
         </div>
         <div class="column mt-2">
-          <label class="label">Second name</label>
-          <input class="input" type="text">
+          <label class="label">Last name</label>
+          <input class="input" type="text" v-model="this.lastName">
         </div>
       </div>
       <label class="label">Country</label>
-      <input class="input" type="text">
+      <input class="input" type="text" v-model="this.country">
       <label class="label">Street adress</label>
-      <input class="input" type="text">
+      <input class="input" type="text" v-model="this.streetAddress">
       <label class="label">Town/City</label>
-      <input class="input" type="text">
+      <input class="input" type="text" v-model="this.city">
       <label class="label">ZIP</label>
-      <input class="input" type="text">
+      <input class="input" type="text" v-model="this.zip">
       <label class="label">Phone number</label>
-      <input class="input" type="number">
+      <input class="input" type="number" v-model="this.phoneNumber">
     </div>
     <div class="column is-auto">
       <h3 class="is-size-4 has-background-warning pl-2">Your order</h3>
@@ -72,7 +72,14 @@
     data () {
       return {
         cart: [],
-        showSuccessMessage: false
+        showSuccessMessage: false,
+        firstName: null,
+        lastName: null,
+        country: null,
+        streetAddress: null,
+        city: null,
+        zip: null,
+        phoneNumber: null
       }
     },
     mounted: function () {
