@@ -65,8 +65,22 @@
       </div>
     </div>
   </div>
+  <SuccessMessage 
+  v-if="showSuccessMessage === true"
+  v-on:closeSuccessMessage="this.showSuccessMessage = false"
+  :firstName="this.firstName"
+  :lastName="this.lastName"
+  :country="this.country"
+  :streetAddress="this.streetAddress"
+  :city="this.city"
+  :zip="this.zip"
+  :phoneNumber="this.phoneNumber"
+  :cart="this.cart"
+  />
 </template>
 <script>
+  import SuccessMessage from '@/components/SuccessMessage.vue'
+  
   export default {
     name: 'Checkout',
     data () {
@@ -81,6 +95,9 @@
         zip: null,
         phoneNumber: null
       }
+    },
+    components: {
+      SuccessMessage
     },
     mounted: function () {
       this.getProductsFromLocalStorage()
