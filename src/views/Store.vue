@@ -1,4 +1,7 @@
 <template>
+  <div class="has-background-danger p-3" v-if="this.warnUser === true">
+    <p class="has-text-white-bis has-text-centered">You already have this product in your cart!</p>
+  </div>
   <div class="columns is-flex-direction-row is-flex-wrap-wrap m-2 is-equal-height">
     <div class="column is-one-quarter-desktop is-full-mobile is-full-tablet" v-for="product in this.products" :key="product.id">
       <div class="card">
@@ -24,9 +27,9 @@
           </div>
           <div class="">
             <div>
-              <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
+              <td><button class="button is-small mr-2" v-on:click="product.qty--">-</button></td>
               <td>{{ product.qty }}</td>
-              <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
+              <td><button class="button is-small ml-2" v-on:click="product.qty++">+</button></td>
             </div>
             <button v-on:click="this.goToProduct(product.id)" class="button mr-2 mt-2">See product</button>
             <button class="button is-primary mt-2" v-on:click="this.storeToLocalStorage(product)">Add to cart</button>
@@ -45,7 +48,8 @@
       return {
         products: null,
         cart: [],
-        product: null
+        product: null,
+        warnUser: false
       }
     },
     mounted: function () {
@@ -68,8 +72,9 @@
 
         if (found) {
           // TODO: Fix better handling
-          console.log('This product is already added')
+          this.warnUser = true
         } else {
+          this.warnUser = false
           this.cart = localStorage.getItem('cart')
           this.cart = this.cart ? JSON.parse(this.cart) : []
           this.product = productObject
