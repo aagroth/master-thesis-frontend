@@ -23,6 +23,11 @@
             {{ product.description }}
           </div>
           <div class="">
+            <div>
+              <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
+              <td>{{ product.qty }}</td>
+              <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
+            </div>
             <button v-on:click="this.goToProduct(product.id)" class="button mr-2 mt-2">See product</button>
             <button class="button is-primary mt-2" v-on:click="this.storeToLocalStorage(product)">Add to cart</button>
           </div>
@@ -59,11 +64,17 @@
         this.$router.push({name:'product',params:{id:idProduct}})
       },
       storeToLocalStorage: function (productObject) {
-        this.cart = localStorage.getItem('cart')
-        this.cart = this.cart ? JSON.parse(this.cart) : []
-        this.product = productObject
-        this.cart.push(this.product)
-        localStorage.setItem("cart", JSON.stringify(this.cart))
+        let found = this.cart.find(product => product.id == productObject.id)
+
+        if (found) {
+          console.log('This product is already added')
+        } else {
+          this.cart = localStorage.getItem('cart')
+          this.cart = this.cart ? JSON.parse(this.cart) : []
+          this.product = productObject
+          this.cart.push(this.product)
+          localStorage.setItem("cart", JSON.stringify(this.cart))
+        }
       }
     }
   }
