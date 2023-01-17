@@ -5,7 +5,6 @@ import Checkout from '@/views/Checkout.vue'
 import Product from '@/views/Product.vue'
 import Store from '@/views/Store.vue'
 import TermsAndCondition from '@/views/TermsAndCondition.vue'
-import User from '@/views/User.vue'
 import Contact from '@/views/Contact.vue'
 
 const router = createRouter({
@@ -45,11 +44,6 @@ const router = createRouter({
       path: '/terms-and-condition',
       name: 'terms and condition',
       component: TermsAndCondition
-    },
-    {
-      path: '/user',
-      name: 'user',
-      component: User
     },
     {
       path: '/contact',

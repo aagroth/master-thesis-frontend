@@ -66,6 +66,7 @@ export default {
     this.getProductsFromLocalStorage()
   },
   computed: {
+    // Calculate items * price to get a total
     totalSum () {
       let total = 0;
         if (this.cart) {
@@ -77,14 +78,17 @@ export default {
     }
   },
   methods: {
+    // Will be running when mounting and get cart from LocalStorage
     getProductsFromLocalStorage: function () {
       this.cart = JSON.parse(localStorage.getItem("cart"))
     },
+    // Loops through cart and remove the choosen product and then set the new LocalStorage
     removeProductFromLocalStorage: function (product) {
       let index = this.cart.indexOf(product)
       this.cart.splice(index, 1)
       localStorage.setItem("cart", JSON.stringify(this.cart))
     },
+    // Will first set cart and then emit up to parent and push user to Checkout
     goToCheckout: function () {
       localStorage.setItem("cart", JSON.stringify(this.cart))
       this.$emit('closeCartComponent')

@@ -1,4 +1,7 @@
 <template>
+  <div class="has-background-danger p-3" v-if="this.warnUser === true">
+    <p class="has-text-white-bis has-text-centered">You already have this product in your cart!</p>
+  </div>
   <div class="mb-3" v-for="(product,index) in products" :key="index">
     <div class="container" v-if="idProduct == product.id">
       <div class="columns">
@@ -30,9 +33,11 @@
               </tr>
               <tr>
                 <td>Quantity:</td>
-                <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
-                <td>{{ product.qty }}</td>
-                <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
+                <td>
+                  <button class="button is-small" v-on:click="product.qty--">-</button>
+                  {{ product.qty }}
+                  <button class="button is-small" v-on:click="product.qty++">+</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -53,13 +58,15 @@
         idProduct: this.$route.params.id,
         products: null,
         cart: [],
-        product: null
+        product: null,
+        warnUser: false
       }
     },
     mounted: function () {
       this.getProducts()
     },
     methods: {
+      // Runs on mount and fills the data property "products" with data from backend
       getProducts: function () {
         apiManager.getAllProductsFromDb().then(products => {
           this.products = products
@@ -68,18 +75,24 @@
           console.log(error)
         })
       },
+      // Pushes user to store page
       goToProducts: function (idProduct) {
         this.$router.push({name:'store'})
       },
+      // Stores product to LocalStorage
       storeToLocalStorage: function (productObject) {
+        // First gets the cart from LocalStorage
+        this.cart = localStorage.getItem('cart')
+        // Else fill this.cart with a empty array
+        this.cart = this.cart ? JSON.parse(this.cart) : []
+        // Then check if product is already saved in LocalStorage
         let found = this.cart.find(product => product.id == productObject.id)
 
+        // If so show message to user
         if (found) {
-          // TODO: Fix better handling
-          console.log('This product is already added')
+          this.warnUser = true
+          // Else push product to this.cart and update LocalStorage
         } else {
-          this.cart = localStorage.getItem('cart')
-          this.cart = this.cart ? JSON.parse(this.cart) : []
           this.product = productObject
           this.cart.push(this.product)
           localStorage.setItem("cart", JSON.stringify(this.cart))
