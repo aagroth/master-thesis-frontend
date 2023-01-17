@@ -1,4 +1,7 @@
 <template>
+  <div class="has-background-danger p-3" v-if="this.warnUser === true">
+    <p class="has-text-white-bis has-text-centered">You already have this product in your cart!</p>
+  </div>
   <div class="mb-3" v-for="(product,index) in products" :key="index">
     <div class="container" v-if="idProduct == product.id">
       <div class="columns">
@@ -30,9 +33,11 @@
               </tr>
               <tr>
                 <td>Quantity:</td>
-                <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
-                <td>{{ product.qty }}</td>
-                <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
+                <td>
+                  <button class="button is-small" v-on:click="product.qty--">-</button>
+                  {{ product.qty }}
+                  <button class="button is-small" v-on:click="product.qty++">+</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -53,7 +58,8 @@
         idProduct: this.$route.params.id,
         products: null,
         cart: [],
-        product: null
+        product: null,
+        warnUser: false
       }
     },
     mounted: function () {
@@ -72,14 +78,13 @@
         this.$router.push({name:'store'})
       },
       storeToLocalStorage: function (productObject) {
+        this.cart = localStorage.getItem('cart')
+        this.cart = this.cart ? JSON.parse(this.cart) : []
         let found = this.cart.find(product => product.id == productObject.id)
 
         if (found) {
-          // TODO: Fix better handling
-          console.log('This product is already added')
+          this.warnUser = true
         } else {
-          this.cart = localStorage.getItem('cart')
-          this.cart = this.cart ? JSON.parse(this.cart) : []
           this.product = productObject
           this.cart.push(this.product)
           localStorage.setItem("cart", JSON.stringify(this.cart))

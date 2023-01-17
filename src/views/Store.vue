@@ -68,15 +68,14 @@
         this.$router.push({name:'product',params:{id:idProduct}})
       },
       storeToLocalStorage: function (productObject) {
+        this.cart = localStorage.getItem('cart')
+        this.cart = this.cart ? JSON.parse(this.cart) : []
         let found = this.cart.find(product => product.id == productObject.id)
 
         if (found) {
-          // TODO: Fix better handling
           this.warnUser = true
         } else {
           this.warnUser = false
-          this.cart = localStorage.getItem('cart')
-          this.cart = this.cart ? JSON.parse(this.cart) : []
           this.product = productObject
           this.cart.push(this.product)
           localStorage.setItem("cart", JSON.stringify(this.cart))
