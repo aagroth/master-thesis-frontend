@@ -67,6 +67,7 @@
         let found = this.cart.find(product => product.id == productObject.id)
 
         if (found) {
+          // TODO: Fix better handling
           console.log('This product is already added')
         } else {
           this.cart = localStorage.getItem('cart')
