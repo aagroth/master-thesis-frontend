@@ -6,12 +6,21 @@
         <p class="modal-card-title">Cart</p>
         <button class="delete" v-on:click="$emit('closeCartComponent')"></button>
       </header>
-      <section class="modal-card-body">
+      <section class="modal-card-body" v-if="this.cart.length > 0">
         <div class="has-background-primary pb-3 pt-3">
           <p class="has-text-white-bis has-text-centered">Woooho! Free shipping as always!</p>
         </div>
         <div>
-          <table class="table mt-5">
+          <table class="table is-fullwidth is-narrow mt-5">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody v-for="product in this.cart" :key="product.id">
               <tr>
                 <td>
@@ -21,9 +30,11 @@
                 </td>
                 <td>{{ product.title }}</td>
                 <td>${{ product.price }}</td>
-                <td><button class="button" v-on:click="product.qty--">-</button></td>
-                <td>{{ product.qty }}</td>
-                <td><button class="button" v-on:click="product.qty++">+</button></td>
+                <td>
+                  <button class="button is-small" v-on:click="product.qty--">-</button>
+                  {{ product.qty }}
+                  <button class="button is-small" v-on:click="product.qty++">+</button>
+                </td>
                 <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
               </tr>
             </tbody>
@@ -32,6 +43,9 @@
         <div class="mt-5 has-text-right">
           <p class="has-text-weight-bold">Total: ${{ this.totalSum }}</p>
         </div>
+      </section>
+      <section class="modal-card-body" v-else>
+        <p class="has-text-centered">Cart is empty</p>
       </section>
       <footer class="modal-card-foot">
         <button class="button is-primary" v-on:click="this.goToCheckout()">Checkout</button>
