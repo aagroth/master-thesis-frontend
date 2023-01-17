@@ -43,9 +43,9 @@
             </td>
             <td>{{ product.title }}</td>
             <td>${{ product.price }}</td>
-            <td><button class="button" v-on:click="product.qty--">-</button></td>
+            <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
             <td>{{ product.qty }}</td>
-            <td><button class="button" v-on:click="product.qty++">+</button></td>
+            <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
             <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
           </tr>
         </tbody>
