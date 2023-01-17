@@ -123,12 +123,11 @@
         localStorage.setItem("cart", JSON.stringify(this.cart))
       },
       sendOrder: function () {
-        // Popup with success order
+        // Turn to true so successMessage will be shown
         this.showSuccessMessage = true
+        
         // clearing LocalStorage
         localStorage.removeItem('cart')
-        // Empty all inputs
-        // Send user to home page
       }
     }
   }
