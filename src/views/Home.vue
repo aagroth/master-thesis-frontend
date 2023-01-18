@@ -35,16 +35,16 @@
         <form class="column is-three-fifths is-offset-one-fifth">
           <div class="field">
             <label class="label">Name</label>
-            <input type="text" class="input" v-model="this.name"> 
+            <input type="text" class="input" v-model="this.name" required> 
           </div>
           <div class="field">
             <label class="label">Email</label>
-            <input type="text" class="input" v-model="this.email"> 
+            <input type="text" class="input" v-model="this.email" required> 
           </div>
           <div class="field">
             <label class="label">Message</label>
             <div class="control">
-              <textarea class="textarea" v-model="this.message"></textarea>
+              <textarea class="textarea" v-model="this.message" required></textarea>
             </div> 
           </div>
           <button class="button is-primary" v-on:click="storeMessage()">Send</button>
