@@ -43,7 +43,7 @@
             </td>
             <td>{{ product.title }}</td>
             <td>${{ product.price }}</td>
-            <td><button class="button is-small" v-on:click="product.qty--">-</button></td>
+            <td><button class="button is-small" v-on:click="this.subtractQty(product)">-</button></td>
             <td>{{ product.qty }}</td>
             <td><button class="button is-small" v-on:click="product.qty++">+</button></td>
             <td><button class="delete has-background-danger" v-on:click="removeProductFromLocalStorage(product)"></button></td>
@@ -133,6 +133,14 @@
         
         // clearing LocalStorage
         localStorage.removeItem('cart')
+      },
+      // Function so user can't place less then one quantity of a product in cart/checkout
+      subtractQty: function (product) {
+        if (product.qty < 2) {
+          product.qty = 1
+        } else {
+          product.qty--
+        }
       }
     }
   }

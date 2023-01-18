@@ -27,7 +27,7 @@
           </div>
           <div class="">
             <div>
-              <td><button class="button is-small mr-2" v-on:click="product.qty--">-</button></td>
+              <td><button class="button is-small mr-2" v-on:click="this.subtractQty(product)">-</button></td>
               <td>{{ product.qty }}</td>
               <td><button class="button is-small ml-2" v-on:click="product.qty++">+</button></td>
             </div>
@@ -87,6 +87,14 @@
           this.product = productObject
           this.cart.push(this.product)
           localStorage.setItem("cart", JSON.stringify(this.cart))
+        }
+      },
+      // Function so user can't place less then one quantity of a product in cart/checkout
+      subtractQty: function (product) {
+        if (product.qty < 2) {
+          product.qty = 1
+        } else {
+          product.qty--
         }
       }
     }
